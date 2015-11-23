@@ -6,8 +6,9 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2015/16.
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V svojem projektu bom analizirala potovanja prebivalcev Slovenije. V prvem delu me bo zanimalo predvsem v katerem starostnem obdobju Slovenci največ potujemo(zasebno); v sklopu tega dela bom analizirala povprečno število prenočitev in povprečne izdatke na turista na prenočitev glede na različne starostne skupine. Primerjala bom podatke desetih let, od leta 2005 do leta 2014. (podatkovni vir: http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=2170110S&ti=&path=../Database/Ekonomsko/21_gostinstvo_turizem/06_potovanja/25_21701_znacilnosti_cetrt/&lang=2)
+V drugem delu pa bom analizirala le za leto 2014, in sicer kakšni so na potovanjih izdatki za prevoz, nastanitve, hrano in druge aktivnosti v Sloveniji in v tujini (tako za zasebna, kot za poslovna potovanja). (podatkovni vir:http://pxweb.stat.si/pxweb/Dialog/varval.asp?ma=2170105S&ti=&path=../Database/Ekonomsko/21_gostinstvo_turizem/06_potovanja/25_21701_znacilnosti_cetrt/&lang=2)
+
 
 ## Program
 
