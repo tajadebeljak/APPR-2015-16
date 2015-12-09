@@ -1,10 +1,14 @@
 # 2. faza: Uvoz podatkov
 
+library(dplyr)
+library(gsubfn)
+
+
 # Funkcija, ki uvozi podatke iz datoteke druzine.csv
 uvozi.druzine <- function() {
   return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
                       row.names = 1,
-                      col.names = c("obcina", "en", "dva", "tri", "stiri"),
+                      col.names = c("Destinacija", "Starost", "POvprečno število nočitev", "Četrtletje", "Meritve"),
                       fileEncoding = "Windows-1250"))
 }
 
