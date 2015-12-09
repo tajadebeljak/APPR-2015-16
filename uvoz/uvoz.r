@@ -3,19 +3,22 @@
 library(dplyr)
 library(gsubfn)
 
+#tabela csv
+
 
 # Funkcija, ki uvozi podatke iz datoteke druzine.csv
-uvozi.druzine <- function() {
-  return(read.table("podatki/druzine.csv", sep = ";", as.is = TRUE,
-                      row.names = 1,
-                      col.names = c("Destinacija", "Starost", "POvprečno število nočitev", "Četrtletje", "Meritve"),
-                      fileEncoding = "Windows-1250"))
+uvozi.potovanja <- function() {
+  return(read.csv2("podatki/potovanja-slovencev.csv",
+                    sep = ";", header = FALSE,
+                    as.is = TRUE,
+                    col.names = c("Destinacija", "Starost", "Povprečno število nočitev", "Četrtletje", "Meritve"),
+                    fileEncoding = "UTF-8"))
 }
 
-# Zapišimo podatke v razpredelnico druzine.
-druzine <- uvozi.druzine()
+# Zapišimo podatke v razpredelnico potovanja.
+potovanja <- uvozi.potovanja()
 
-obcine <- uvozi.obcine()
+
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
