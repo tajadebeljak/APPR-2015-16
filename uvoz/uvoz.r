@@ -18,6 +18,21 @@ uvozi.potovanja <- function() {
 # Zapišimo podatke v razpredelnico potovanja.
 potovanja <- uvozi.potovanja()
 
+uredi <- function(tabela, x, y, z, max = nrow(tabela)) { 
+     s <- seq(x, max, z+1) 
+     tabela[t(matrix(x:max, ncol=length(s))), y] <- tabela[s, y] 
+     tabela <- tabela[-s,] 
+     return(tabela) 
+} 
+
+potovanja <- uredi(potovanja, 1, 1, 332) 
+potovanja <- uredi(potovanja, 1, 2, 82) 
+potovanja <- uredi(potovanja, 1, 3, 40) 
+
+
+
+
+
 
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
