@@ -42,12 +42,18 @@ potovanja[potovanja =='N']<-NA
 
 #HTML TABELA
 
+
 html <- file("podatki/potovanja-slovencev.html") %>% read_html()
 
-tabela <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
-Encoding(tabela[[1]]) <- "UTF-8"
-tabela <- t(apply(tabela, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)])))
+tabela2 <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
+Encoding(tabela2[[1]]) <- "UTF-8"
+tabela2 <- t(apply(tabela2, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)])))
 
+
+tabela2 <- uredi(tabela2, 1, 1, 384, brisi=FALSE)
+tabela2 <- uredi(tabela2, 1, 2, 95, brisi=FALSE)
+tabela2 <- uredi(tabela2, 1, 3, 47, brisi=FALSE)
+tabela2 <- uredi(tabela2, 1, 4, 11, brisi=FALSE)
 
 
 
