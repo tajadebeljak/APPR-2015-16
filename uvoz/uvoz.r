@@ -13,7 +13,7 @@ library(rvest)
 uvozi.potovanja <- function() {
   return(read.csv2("podatki/potovanja-slovencev.csv",
                     sep = ";", header = FALSE,
-                    as.is = TRUE,
+                    as.is = TRUE, na.strings = 'N',
                     col.names = c("Destinacija", "Starost", "Povprečno število nočitev in izdatkov", "Četrtletje", "Meritve"),
                     fileEncoding = "UTF-8"))
 }
@@ -35,9 +35,9 @@ uredi <- function(tabela, x, y, z, max = nrow(tabela), brisi = TRUE) {
 potovanja <- uredi(potovanja, 1, 1, 332) 
 potovanja <- uredi(potovanja, 1, 2, 82) 
 potovanja <- uredi(potovanja, 1, 3, 40) 
+potovanja$Meritve <- gsub("M", "", potovanja$Meritve) %>% as.numeric()
 
 
-potovanja[potovanja =='N']<-NA
 
 
 #HTML TABELA
@@ -48,6 +48,7 @@ html <- file("podatki/potovanja-slovencev.html") %>% read_html()
 tabela2 <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
 Encoding(tabela2[[1]]) <- "UTF-8"
 tabela2 <- t(apply(tabela2, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)])))
+tabela2 <- tabela2[-nrow(tabela2),]
 
 
 tabela2 <- uredi(tabela2, 1, 1, 384, brisi=FALSE)
