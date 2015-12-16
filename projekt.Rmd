@@ -1,6 +1,6 @@
 ---
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+author: "Taja Debeljak"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -17,9 +17,9 @@ output:
 source("lib/libraries.r", encoding = "UTF-8")
 ```
 
-# Izbira teme
+# Potovanja Slovencev
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za vzorec bom prikazala nekaj podatkov o potovanjih Slovencev.
 
 ***
 
@@ -29,8 +29,7 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Poglejmo si začetka obeh uvoženih razpredelnic.
+Uvozila sem podatke o potovanjih v obliki CSV in HTML s statističnega urada. Poglejmo si začetka obeh uvoženih razpredelnic.
 
 ```{r razpredelnice}
 kable(head(druzine))
