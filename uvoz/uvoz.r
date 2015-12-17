@@ -35,6 +35,7 @@ uredi <- function(tabela, x, y, z, max = nrow(tabela), brisi = TRUE) {
 potovanja <- uredi(potovanja, 1, 1, 332) 
 potovanja <- uredi(potovanja, 1, 2, 82) 
 potovanja <- uredi(potovanja, 1, 3, 40) 
+
 potovanja$Meritve <- gsub("M", "", potovanja$Meritve) %>% as.numeric()
 
 
@@ -81,8 +82,8 @@ tabela2 <- uredi(tabela2, 1, 2, 95, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 3, 47, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 4, 11, brisi=FALSE)
 
-
-
+#tabela2$Meritve <- gsub("M", "", tabela2$Meritve) %>% as.numeric()
+#colnames(tabela2)<-("1", "2", "3", "4")
 
 
 
