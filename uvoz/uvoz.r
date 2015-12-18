@@ -14,7 +14,7 @@ uvozi.potovanja <- function() {
   return(read.csv2("podatki/potovanja-slovencev.csv",
                     sep = ";", header = FALSE,
                     as.is = TRUE, na.strings = 'N',
-                    col.names = c("Destinacija", "Starost", "Povprečno število nočitev in izdatkov", "Četrtletje", "Meritve"),
+                    col.names = c("Destinacija", "Starost", "Povprecno.stevilo.nocitev.in.izdatkov", "Četrtletje", "Meritve"),
                     fileEncoding = "UTF-8"))
 }
 
@@ -43,23 +43,23 @@ starost <- c("15-24","25-44","45-64", "65+")
 
 #izdatki po starostih za Slovenijo
 vsote_slo <- c(filter(potovanja, Destinacija=="Slovenija",Starost=="15-24", 
-                  Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                  `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                filter(potovanja, Destinacija=="Slovenija",Starost=="25-44", 
-                  Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                  `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                filter(potovanja, Destinacija=="Slovenija",Starost=="45-64", 
-                  Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                  `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                filter(potovanja, Destinacija=="Slovenija",Starost=="65+", 
-                  Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum())
+                  `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum())
 
 #izdatki po starostih za tujino
 vsote_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24", 
-                         Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                   filter(potovanja, Destinacija=="Tujina",Starost=="25-44", 
-                         Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                   filter(potovanja, Destinacija=="Tujina",Starost=="45-64", 
-                         Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
                   filter(potovanja, Destinacija=="Tujina",Starost=="65+", 
-                         Povprečno število nočitev in izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum(),
+                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum())
 odstotki <- round(vsote_slo/vsote_tujina)
 
 tabela_starosti <- data.frame(starost, vsote_slo, vsote_tujina, odstotki) 
