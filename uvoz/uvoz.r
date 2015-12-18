@@ -73,7 +73,7 @@ html <- file("podatki/potovanja-slovencev.html") %>% read_html()
 
 tabela2 <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
 Encoding(tabela2[[1]]) <- "UTF-8"
-tabela2 <- t(apply(tabela2, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)])))
+tabela2 <- t(apply(tabela2, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)]))) %>% data.frame()
 tabela2 <- tabela2[-nrow(tabela2),]
 
 
@@ -82,8 +82,8 @@ tabela2 <- uredi(tabela2, 1, 2, 95, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 3, 47, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 4, 11, brisi=FALSE)
 
-#tabela2$Meritve <- gsub("M", "", tabela2$Meritve) %>% as.numeric()
-#colnames(tabela2)<-("1", "2", "3", "4")
+colnames(tabela2)<-c("V1", "V2", "V3", "V4", "V5", "Meritve")
+tabela2$Meritve <- gsub("[MN]", "", as.character(tabela2$Meritve)) %>% as.numeric()
 
 
 
