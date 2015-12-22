@@ -63,7 +63,7 @@ vsote_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24",
                   filter(potovanja, Destinacija=="Tujina",Starost=="65+", 
                          `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečni izdatki na turista na prenočitev (EUR)")$Meritve%>% sum())
 
-odstotki <- round(vsote_slo/vsote_tujina)
+odstotki <- round(vsote_slo/vsote_tujina,2)
 
 tabela_starosti <- data.frame(starost, vsote_slo, vsote_tujina, odstotki) 
 
@@ -93,6 +93,10 @@ prenocitve_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24",
 
 tabela_prenocitve <- data.frame(starost, prenocitve_slo, prenocitve_tujina)
                   
+
+
+
+
 #HTML TABELA
 
 
@@ -109,8 +113,16 @@ tabela2 <- uredi(tabela2, 1, 2, 95, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 3, 47, brisi=FALSE)
 tabela2 <- uredi(tabela2, 1, 4, 11, brisi=FALSE)
 
-colnames(tabela2)<-c("V1", "V2", "V3", "V4", "V5", "Meritve")
+colnames(tabela2)<-c("Povprecni_izdatki", "Vrsta_potovanja", "Destinacija", "Izdatki", "Cetrtletlje", "Meritve")
 tabela2$Meritve <- gsub("[MN]", "", as.character(tabela2$Meritve)) %>% as.numeric()
+
+
+
+
+#izdatki za zasebna in poslovna potovanja
+vrsta_potovanja <-c("Poslovno", "Zasebno")
+
+#izdatki_prevoz<-c(filter(tabela2, povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", ))
 
 
 
