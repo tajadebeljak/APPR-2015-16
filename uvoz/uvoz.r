@@ -96,8 +96,9 @@ prenocitve_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24",
 
 tabela_prenocitve <- data.frame(starost, round(prenocitve_slo, 2), round(prenocitve_tujina, 2))
                   
+colnames(tabela_prenocitve)<-c("Starost", "Povprecno_st_prenocitev_Slo", "Povprecno_st_prenocitev_tujina")
 
-
+ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="darkblue",size=1)
 
 
 #HTML TABELA
