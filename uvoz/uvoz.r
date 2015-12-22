@@ -123,7 +123,7 @@ tabela2$Meritve <- gsub("[MN]", "", as.character(tabela2$Meritve)) %>% as.numeri
 
 
 #izdatki za zasebna in poslovna potovanja
-vrsta_potovanja <-c("Poslovno", "Zasebno")
+
 
 izdatki_zasebno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
                           Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
@@ -134,7 +134,18 @@ izdatki_zasebno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turi
                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
                           Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
 
+izdatki_poslovno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+                           Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+                           Destinacija="Slovenija", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE),
+                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+                           Destinacija="Tujina", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+                           Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
 
+izdatki1<-c("nastanitev/Slovenija", "prevoz/Slovenija", "nastanitev/tujina", "prevoz/tujina")
+
+tabela_poslovno_zasebno <- data.frame(izdatki1, izdatki_zasebno, izdatki_poslovno)
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
