@@ -2,13 +2,14 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Taja Debeljak"
 output:
+  html_document: default
   pdf_document:
-    latex_engine: xelatex
     includes:
       in_header: lib/styles.sty
+    latex_engine: xelatex
 ---
 
-```{r setup, echo=FALSE, results='hide', message=FALSE}
+```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
 #source("fontconfig.r", encoding = "UTF-8")
@@ -33,23 +34,23 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 
 Podatke o potovanjih Slovencev sem, v obliki csv, uvozila iz statističnega urada RS (SURS). Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
 
-```{r razpredelnice}
+```{r razpredelnice, echo=FALSE}
 kable(head(potovanja))
 ```
 
 Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
 Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
 
-```{r graf}
+```{r graF, echo=FALSE}
 ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="darkblue",size=1)
 ```
 
 
 ## Druga tabela
 
-Drugo tabelo sem uvozila v obliki HTML. Ravno tako kot prvo tabelo, sem tudi to preuredila do 3.normalizirane oblike. 
+Drugo tabelo sem uvozila v obliki HTML. Ravno tako kot prvo tabelo, sem tudi to preuredila do 3.normalizirane oblike.Tukaj sem primerjala izdatke za poslovna in zasebna potovanja.
 
-```{r razpredelnice}
+```{r tabela, echo=FALSE}
 kable(head(tabela2))
 ```
 
