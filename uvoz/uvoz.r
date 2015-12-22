@@ -125,27 +125,49 @@ tabela2$Meritve <- gsub("[MN]", "", as.character(tabela2$Meritve)) %>% as.numeri
 #izdatki za zasebna in poslovna potovanja
 
 
-izdatki_zasebno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
-                          Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
-                   filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
-                          Destinacija="Slovenija", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE),
-                   filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
-                          Destinacija="Tujina", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
-                   filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
-                          Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
+# izdatki_zasebno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
+#                           Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+#                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
+#                           Destinacija="Slovenija", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE),
+#                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
+#                           Destinacija="Tujina", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+#                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Zasebna potovanja",
+#                           Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
+# 
+# izdatki_poslovno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+#                            Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+#                     filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+#                            Destinacija="Slovenija", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE),
+#                     filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+#                            Destinacija="Tujina", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
+#                     filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
+#                            Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
 
-izdatki_poslovno<-c(filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
-                           Destinacija="Slovenija", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
-                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
-                           Destinacija="Slovenija", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE),
-                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
-                           Destinacija="Tujina", Izdatki="Izdatki za nastanitev")$Meritve%>% sum(na.rm=TRUE),
-                    filter(tabela2, Povprecni_izdatki="Povprečni izdatki na turista na prenočitev (EUR)", Vrsta_potovanja="Poslovna potovanja",
-                           Destinacija="Tujina", Izdatki="Izdatki za prevoz")$Meritve%>% sum(na.rm=TRUE))
 
-izdatki1<-c("nastanitev/Slovenija", "prevoz/Slovenija", "nastanitev/tujina", "prevoz/tujina")
+izdatki_zasebno <- tabela2 %>% filter(Vrsta_potovanja == "Zasebna potovanja",
+                                      Izdatki %in% c("Izdatki za nastanitev",
+                                                     "Izdatki za prevoz")) %>%
+  group_by(Destinacija, Izdatki) %>% summarize(sum(Meritve, na.rm = TRUE))
 
-tabela_poslovno_zasebno <- data.frame(izdatki1, izdatki_zasebno, izdatki_poslovno)
+colnames(izdatki_zasebno)<-c("Destinacija", "Izdatki", "Meritve")
+izd2<-c(izdatki_zasebno["Meritve"])
+
+izdatki_poslovno <- tabela2 %>% filter(Vrsta_potovanja == "Poslovna potovanja",
+                                      Izdatki %in% c("Izdatki za nastanitev",
+                                                     "Izdatki za prevoz")) %>%
+  group_by(Destinacija, Izdatki) %>% summarize(sum(Meritve, na.rm = TRUE))
+
+colnames(izdatki_poslovno)<-c("Destinacija", "Izdatki", "Meritve")
+izd3<-c(izdatki_poslovno["Meritve"])
+
+
+izdatki1<-c("nastanitev", "prevoz", "nastanitev", "prevoz")
+izdatki2<-c("Slovenija", "Slovenija", "Tujina", "Tujina")
+
+tabela_poslovno_zasebno <- data.frame(izdatki2, izdatki1, izd2, izd3)
+colnames(tabela_poslovno_zasebno)<-c("Destinacija","Izdatki", "Zasebna potovanja", "Poslovna potovanja")
+
+ggplot(data=tabela_poslovno_zasebno%>%filter(Izdatki=="Nastanitev"), aes(x="Izdatki", y="Zasebna potovanja")) + geom_point()
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
