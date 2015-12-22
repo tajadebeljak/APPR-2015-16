@@ -73,25 +73,30 @@ ggplot(data= tabela_starosti, aes(x=starost, y=odstotki)) + geom_point()
 
 
 ##povprečno število prenočitev po staorstnih skupinah
-prenocitve_slo <- c(filter(potovanja, Destinacija=="Slovenija",Starost=="15-24", 
-                      `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-               filter(potovanja, Destinacija=="Slovenija",Starost=="25-44", 
-                      `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-               filter(potovanja, Destinacija=="Slovenija",Starost=="45-64", 
-                      `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-               filter(potovanja, Destinacija=="Slovenija",Starost=="65+", 
-                      `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum())
+# prenocitve_slo <- c(filter(potovanja, Destinacija=="Slovenija",Starost=="15-24", 
+#                       `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                filter(potovanja, Destinacija=="Slovenija",Starost=="25-44", 
+#                       `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                filter(potovanja, Destinacija=="Slovenija",Starost=="45-64", 
+#                       `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                filter(potovanja, Destinacija=="Slovenija",Starost=="65+", 
+#                       `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum())
+# 
+# prenocitve_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24", 
+#                          `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                   filter(potovanja, Destinacija=="Tujina",Starost=="25-44", 
+#                          `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                   filter(potovanja, Destinacija=="Tujina",Starost=="45-64", 
+#                          `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
+#                   filter(potovanja, Destinacija=="Tujina",Starost=="65+", 
+#                          `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum())
 
-prenocitve_tujina <- c(filter(potovanja, Destinacija=="Tujina",Starost=="15-24", 
-                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-                  filter(potovanja, Destinacija=="Tujina",Starost=="25-44", 
-                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-                  filter(potovanja, Destinacija=="Tujina",Starost=="45-64", 
-                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum(),
-                  filter(potovanja, Destinacija=="Tujina",Starost=="65+", 
-                         `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev")$Meritve%>% sum())
 
-tabela_prenocitve <- data.frame(starost, prenocitve_slo, prenocitve_tujina)
+prenocitve_slo_tujina <- filter(potovanja,
+                                `Povprecno.stevilo.nocitev.in.izdatkov`=="Povprečno število prenočitev") %>%
+  group_by(Starost, Destinacija) %>% summarize(sum(Meritve, na.rm = TRUE)) %>% data.frame()
+
+#tabela_prenocitve <- data.frame(starost, prenocitve_slo, prenocitve_tujina)
                   
 
 
