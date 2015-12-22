@@ -19,7 +19,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Potovanja Slovencev
 
-Za vzorec bom prikazala nekaj podatkov o potovanjih Slovencev.
+Za temo projekta sem si izbrala potovanja Slovencev. V svojem projektu sem analizirala kakšni so povprečni izdatki in povprečno število prenočitev za potovanja po različnih starostnih skupinah. Uporabila sem meritve od leta 2005 do leta 2014. Poleg tega pa sem še za leta 2012, 1013 in 2014 primerjala višino izdatkov za zasebna in poslovna potovanja (izdatki za prevoz in nastanitev).
 
 ***
 
@@ -29,12 +29,26 @@ Za vzorec bom prikazala nekaj podatkov o potovanjih Slovencev.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozila sem podatke o potovanjih v obliki CSV in HTML s statističnega urada. Poglejmo si začetka obeh uvoženih razpredelnic.
+## Prva tabela
+
+Podatke o potovanjih Slovencev sem, v obliki csv, uvozila iz statističnega urada RS (SURS). Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
 
 ```{r razpredelnice}
-kable(head(druzine))
-head(obcine)
+kable(head(potovanja))
 ```
+
+Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
+Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
+
+## Druga tabela
+
+Drugo tabelo sem uvozila v obliki HTML. Ravno tako kot prvo tabelo, sem tudi to preuredila do 3.normalizirane oblike. 
+
+```{r razpredelnice}
+kable(head(tabela2))
+```
+
+
 
 Slika \ref{fig:histogram} prikazuje porazdelitev števila naselij v občinah.
 
