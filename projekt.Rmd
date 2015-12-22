@@ -40,6 +40,11 @@ kable(head(potovanja))
 Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
 Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
 
+```{r graf}
+ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="darkblue",size=1)
+```
+
+
 ## Druga tabela
 
 Drugo tabelo sem uvozila v obliki HTML. Ravno tako kot prvo tabelo, sem tudi to preuredila do 3.normalizirane oblike. 
