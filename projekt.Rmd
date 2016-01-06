@@ -37,10 +37,6 @@ Podatke o potovanjih Slovencev sem, v obliki csv, uvozila iz statističnega urad
 ```{r razpredelnice, echo=FALSE}
 kable(head(potovanja))
 ```
-
-Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
-Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
-
 ###Spremenljivke:
 
 * destinacija: _imenska spremenljivka_
@@ -48,6 +44,11 @@ Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazu
 * povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_
 * četrtletje: _številska spremenljivka_
 * meritve: _številska spremenljivka_
+
+
+Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
+Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
+
 
 
 ```{r graF, echo=FALSE}
