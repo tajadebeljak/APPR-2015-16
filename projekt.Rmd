@@ -43,11 +43,11 @@ Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazu
 
 ###Spremenljivke:
 
-*destinacija: _imenska spremenljivka_
-*starost: _številska spremenljivka_
-*povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_
-*četrtletje: _številska spremenljivka_
-*meritve: _številska spremenljivka_
+* destinacija: _imenska spremenljivka_
+* starost: _številska spremenljivka_
+* povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_
+* četrtletje: _številska spremenljivka_
+* meritve: _številska spremenljivka_
 
 
 ```{r graF, echo=FALSE}
@@ -67,12 +67,12 @@ kable(head(tabela2))
 
 ###Spremenljivke:
 
-*povprecni_izdatki: _imenska spremenljivka_
-*vrsta_potovanja: _imenska spremenljivka_
-*destinacija: _imenska spremenljivka_
-*izdatki: _imenska spremenljivka_
-*cetrtletje: _stevilska spremenljivka_
-*meritve: _stevilka spremenljivka_
+* povprecni_izdatki: _imenska spremenljivka_
+* vrsta_potovanja: _imenska spremenljivka_
+* destinacija: _imenska spremenljivka_
+* izdatki: _imenska spremenljivka_
+* cetrtletje: _stevilska spremenljivka_
+* meritve: _stevilka spremenljivka_
 
 
 ***
