@@ -163,8 +163,8 @@ izdatki2<-c("Slovenija", "Slovenija", "Tujina", "Tujina")
 tabela_poslovno_zasebno <- data.frame(izdatki2, izdatki1, izd2, izd3)
 colnames(tabela_poslovno_zasebno)<-c("Destinacija","Izdatki", "Zasebna potovanja", "Poslovna potovanja")
 
-#ggplot(data=izdatki_zasebno, aes(x="Destinacija", y="Meritve")) + geom_point()
-#ggplot(data=tabela_poslovno_zasebno%>%filter(Izdatki=="Nastanitev"), aes(x="Izdatki", y="Zasebna potovanja")) + geom_point()
+ggplot(data=izdatki_zasebno, aes(x=Destinacija, y=Meritve, fill=Izdatki)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(data=tabela_poslovno_zasebno%>%filter(Izdatki=="nastanitev"), aes(x=Izdatki, y=`Zasebna potovanja`)) + geom_bar(stat = "identity", position = "dodge")
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
