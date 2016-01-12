@@ -163,8 +163,30 @@ izdatki2<-c("Slovenija", "Slovenija", "Tujina", "Tujina")
 tabela_poslovno_zasebno <- data.frame(izdatki2, izdatki1, izd2, izd3)
 colnames(tabela_poslovno_zasebno)<-c("Destinacija","Izdatki", "Zasebna potovanja", "Poslovna potovanja")
 
-ggplot(data=izdatki_zasebno, aes(x=Destinacija, y=Meritve, fill=Izdatki)) + geom_bar(stat = "identity", position = "dodge")
-ggplot(data=tabela_poslovno_zasebno%>%filter(Izdatki=="nastanitev"), aes(x=Izdatki, y=`Zasebna potovanja`)) + geom_bar(stat = "identity", position = "dodge")
+
+#NOVA TABELA
+nova_tabela <- tabela2 %>% filter(Izdatki %in% c("Izdatki za nastanitev",
+                                                     "Izdatki za prevoz")) %>%
+  group_by(Vrsta_potovanja, Destinacija, Izdatki) %>% summarize(sum(Meritve, na.rm = TRUE))
+colnames(nova_tabela)<-c("Vrsta_potovanja","Destinacija","Izdatki","Meritve")
+
+nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanja=='Poslovna potovanja')
+
+
+
+graf3<-ggplot(data=izdatki_zasebno, aes(x=Destinacija, y=Meritve, fill=Izdatki)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(data=nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanja=='Poslovna potovanja'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+
+
+
+
+## TABELA DESTINACIJE
+html <- file("destinacije.html") %>% read_html()
+
+#tabela3 <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
+#Encoding(tabela3[[1]]) <- "UTF-8"
+#tabela3 <- t(apply(tabela3, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)]))) %>% data.frame()
+#tabela3 <- tabela3[-nrow(tabela3),]
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
