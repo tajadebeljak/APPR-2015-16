@@ -1,8 +1,15 @@
 # 3. faza: Izdelava zemljevida
 
+source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
+library(ggplot2)
+library(dplyr)
+
 # Uvozimo zemljevid.
-zemljevid <- uvozi.zemljevid("http://e-prostor.gov.si/fileadmin/BREZPLACNI_POD/RPE/OB.zip",
-                             "OB/OB", encoding = "Windows-1250")
+zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
+                             "ne_50m_admin_0_countries", encoding = "UTF-8")
+
+
+rownames(tabela4)
 
 # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
 druzine <- preuredi(druzine, zemljevid, "OB_UIME", c("Ankaran", "Mirna"))
