@@ -37,7 +37,10 @@ Podatke o potovanjih Slovencev sem, v obliki csv, uvozila iz statističnega urad
 ```{r razpredelnice, echo=FALSE}
 kable(head(potovanja))
 ```
-###Spremenljivke:
+
+
+## Spremenljivke:
+
 
 * destinacija: _imenska spremenljivka_
 * starost: _številska spremenljivka_
