@@ -9,10 +9,11 @@ zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturale
                              "ne_50m_admin_0_countries", encoding = "UTF-8")
 
 
-rownames(tabela4)
+
 
 # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
-druzine <- preuredi(druzine, zemljevid, "OB_UIME", c("Ankaran", "Mirna"))
+destinacije2 <- preuredi(tabela4, zemljevid, sovereignt)
+
 
 # Izračunamo povprečno velikost družine.
 druzine$povprecje <- apply(druzine[1:4], 1, function(x) sum(x*(1:4))/sum(x))
