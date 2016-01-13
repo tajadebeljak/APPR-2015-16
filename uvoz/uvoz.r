@@ -181,12 +181,17 @@ ggplot(data=nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_pot
 
 
 ## TABELA DESTINACIJE
-html <- file("destinacije.html") %>% read_html()
 
-#tabela3 <- html %>% html_nodes(xpath="//table[1]") %>% .[[1]] %>% html_table(fill = TRUE)
-#Encoding(tabela3[[1]]) <- "UTF-8"
-#tabela3 <- t(apply(tabela3, 1, function(x) c(rep(NA, sum(is.na(x))), x[!is.na(x)]))) %>% data.frame()
-#tabela3 <- tabela3[-nrow(tabela3),]
+library(XML)
+naslov = "https://en.wikipedia.org/wiki/Tourism"
+stran <- html_session(naslov) %>% read_html()
+tabela4 <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>% .[[1]] %>% html_table()
+tabela4$Country <- tabela4$Country %>% strapplyc("([A-Za-z ]+)")
+
+colnames(tabela4)<-c("Rank", "Drzava", "Region", "Prihodi2014", "Prihodi2013", "change(2013-1014", "change(2012-2014)")
+
+tabela4$Prihodi2014 <- gsub("million", "", tabela4$Prihodi2014) %>% as.numeric()
+tabela4$Prihodi2013 <- gsub("million", "", tabela4$Prihodi2013) %>% as.numeric()
 
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
