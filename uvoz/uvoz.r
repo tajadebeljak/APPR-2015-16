@@ -192,7 +192,7 @@ colnames(tabela4)<-c("Rank", "Drzava", "Region", "Prihodi2014", "Prihodi2013", "
 
 tabela4$Prihodi2014 <- gsub("million", "", tabela4$Prihodi2014) %>% as.numeric()
 tabela4$Prihodi2013 <- gsub("million", "", tabela4$Prihodi2013) %>% as.numeric()
-
+tabela4$Drzava<-gsub("United States", "United States of America", tabela4$Drzava)
 # Če bi imeli več funkcij za uvoz in nekaterih npr. še ne bi
 # potrebovali v 3. fazi, bi bilo smiselno funkcije dati v svojo
 # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v

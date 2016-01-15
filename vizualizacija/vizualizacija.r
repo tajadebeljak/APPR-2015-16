@@ -12,6 +12,7 @@ zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturale
 
 
 # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
+rownames(tabela4)<-tabela4$Drzava
 destinacije2 <- preuredi(tabela4, zemljevid, sovereignt)
 
 
