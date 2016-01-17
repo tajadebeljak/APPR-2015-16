@@ -13,7 +13,7 @@ zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturale
 
 # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
 rownames(tabela4)<-tabela4$Drzava
-m <- match(zemljevid$name, tabela4$Drzava)
+m <- match(zemljevid$sovereignt, tabela4$Drzava)
 zemljevid$Prihodi2014 <- tabela4$Prihodi2014[m]
 
 
@@ -23,6 +23,13 @@ pretvori.zemljevid <- function(zemljevid) {
   data$id <- as.character(0:(nrow(data)-1))
   return(inner_join(fo, data, by="id"))
 }
+
+zemljevid1 <- pretvori.zemljevid(zemljevid)
+
+
+zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
+                                                                  fill=zemljevid$Prihodi2014),color = "grey30")
+
 
 # Izračunamo povprečno velikost družine.
 #druzine$povprecje <- apply(druzine[1:4], 1, function(x) sum(x*(1:4))/sum(x))
