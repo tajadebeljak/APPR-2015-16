@@ -13,7 +13,7 @@ zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturale
 
 # Preuredimo podatke, da jih bomo lahko izrisali na zemljevid.
 rownames(tabela4)<-tabela4$Drzava
-m <- match(zemljevid$sovereignt, tabela4$Drzava)
+m <- match(zemljevid$name, tabela4$Drzava)
 zemljevid$Prihodi2014 <- tabela4$Prihodi2014[m]
 
 
@@ -28,7 +28,7 @@ zemljevid1 <- pretvori.zemljevid(zemljevid)
 
 
 zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
-                                                                  fill=m),color = "grey30")
+                                                                  fill=zemljevid$Prihodi2014),color = "grey30")
 
 print(zem)
 
