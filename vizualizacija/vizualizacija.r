@@ -28,7 +28,9 @@ zemljevid1 <- pretvori.zemljevid(zemljevid)
 
 
 zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
-                                                                  fill=zemljevid$Prihodi2014),color = "grey30")
+                                                                  fill=m),color = "grey30")
+
+print(zem)
 
 
 # Izračunamo povprečno velikost družine.
