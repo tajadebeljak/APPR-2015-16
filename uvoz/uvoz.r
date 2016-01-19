@@ -94,7 +94,7 @@ tabela_prenocitve <- data.frame(starost, round(prenocitve_slo, 2), round(prenoci
                   
 colnames(tabela_prenocitve)<-c("Starost", "Povprecno_st_prenocitev_Slo", "Povprecno_st_prenocitev_tujina")
 
-ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="darkblue",size=1)
+ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
 
 
 #HTML TABELA
@@ -173,9 +173,11 @@ colnames(nova_tabela)<-c("Vrsta_potovanja","Destinacija","Izdatki","Meritve")
 nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanja=='Poslovna potovanja')
 
 
+tab <- nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanja=='Poslovna potovanja')
 
 graf3<-ggplot(data=izdatki_zasebno, aes(x=Destinacija, y=Meritve, fill=Izdatki)) + geom_bar(stat = "identity", position = "dodge")
-ggplot(data=nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanja=='Poslovna potovanja'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+graf4<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 
 
 
