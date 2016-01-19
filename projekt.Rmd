@@ -54,7 +54,7 @@ Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazu
 
 
 
-```{r graF, echo=FALSE}
+```{r graF1, echo=FALSE}
 ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
 ```
 
@@ -78,11 +78,11 @@ kable(head(tabela2))
 * cetrtletje: _stevilska spremenljivka_
 * meritve: _stevilka spremenljivka_
 
-```{r graF, echo=FALSE}
+```{r graF2, echo=FALSE, fig.cap="Izdatki za nastanitev"}
 ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-```{r graF, echo=FALSE}
+```{r graF3, echo=FALSE}
 ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
@@ -91,16 +91,14 @@ ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y
 
 ##Zemljevid
 
+```{r zemljevid, echo=FALSE, fig.cap='Top turisitične države'}
+zem
+```
+
+
 Zemljevid prikazuje najbolj turistično obiskane države v letu 2014.
 
 
-```{r zemljevid, echo=FALSE, fig.cap="Top turisitične države"}
-zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
-                                                                  fill=Prihodi2014),color = "grey") +
-  scale_fill_gradient (low = "rosybrown1", high = "rosybrown4") +
-                                                           guides(fill = guide_colorbar(title = "Top destinacije"))
-print(zem)
-```
 
 ***
 
