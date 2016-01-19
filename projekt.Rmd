@@ -79,11 +79,11 @@ kable(head(tabela2))
 * meritve: _stevilka spremenljivka_
 
 ```{r graF, echo=FALSE}
-graf4<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
 ```{r graF, echo=FALSE}
-graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
 
