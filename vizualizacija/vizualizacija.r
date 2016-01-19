@@ -30,7 +30,7 @@ zemljevid1 <- pretvori.zemljevid(zemljevid)
 zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
                                                                   fill=Prihodi2014),color = "grey") +
   scale_fill_gradient (low = "rosybrown1", high = "rosybrown4") +
-                                                           guides(fill = guide_colorbar(title = "Top destinacije"))
+                                                           guides(fill = guide_colorbar(title = "Stevilo turistov (v milijonih)"))
 
 print(zem)
 

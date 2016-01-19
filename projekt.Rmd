@@ -94,7 +94,11 @@ graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potov
 Zemljevid prikazuje najbolj turistično obiskane države v letu 2014.
 
 
-```{r zemljevid, echo=FALSE}
+```{r zemljevid, echo=FALSE, fig.cap="Top turisitične države"}
+zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
+                                                                  fill=Prihodi2014),color = "grey") +
+  scale_fill_gradient (low = "rosybrown1", high = "rosybrown4") +
+                                                           guides(fill = guide_colorbar(title = "Top destinacije"))
 print(zem)
 ```
 
