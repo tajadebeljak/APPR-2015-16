@@ -89,7 +89,10 @@ graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potov
 
 #Vizualizacija
 
+##Zemljevid
+
 Zemljevid prikazuje najbolj turistično obiskane države v letu 2014.
+
 
 ```{r zemljevid, echo=FALSE}
 print(zem)
