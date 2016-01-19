@@ -55,7 +55,7 @@ Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazu
 
 
 ```{r graF, echo=FALSE}
-ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="darkblue",size=1)
+ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
 ```
 
 
@@ -77,6 +77,16 @@ kable(head(tabela2))
 * izdatki: _imenska spremenljivka_
 * cetrtletje: _stevilska spremenljivka_
 * meritve: _stevilka spremenljivka_
+
+```{r graF, echo=FALSE}
+graf4<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+```
+
+```{r graF, echo=FALSE}
+graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+```
+
+
 
 
 ***
