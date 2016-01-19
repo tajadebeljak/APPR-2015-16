@@ -177,7 +177,7 @@ tab <- nova_tabela%>%filter(Vrsta_potovanja=='Zasebna potovanja'| Vrsta_potovanj
 
 graf3<-ggplot(data=izdatki_zasebno, aes(x=Destinacija, y=Meritve, fill=Izdatki)) + geom_bar(stat = "identity", position = "dodge")
 graf4<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
-graf5<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+graf7<-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 
 
 
