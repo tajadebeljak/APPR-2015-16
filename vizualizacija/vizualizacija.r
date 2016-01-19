@@ -35,7 +35,6 @@ zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group
 print(zem)
 
 
-print(zem)
 
 # Izračunamo povprečno velikost družine.
 #druzine$povprecje <- apply(druzine[1:4], 1, function(x) sum(x*(1:4))/sum(x))
