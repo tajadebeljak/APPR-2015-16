@@ -28,8 +28,12 @@ zemljevid1 <- pretvori.zemljevid(zemljevid)
 
 
 zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group,
-                                                                  fill=zemljevid$Prihodi2014),color = "grey30")
+                                                                  fill=Prihodi2014),color = "grey") +
+  scale_fill_gradient (low = "rosybrown1", high = "rosybrown4") +
+                                                           guides(fill = guide_colorbar(title = "Top destinacije"))
 
+
+print(zem)
 
 # Izračunamo povprečno velikost družine.
 #druzine$povprecje <- apply(druzine[1:4], 1, function(x) sum(x*(1:4))/sum(x))
