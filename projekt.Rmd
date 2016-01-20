@@ -47,7 +47,7 @@ kable(head(potovanja))
 ### Spremenljivke:
 
 
-* destinacija: _imenska spremenljivka_ (SLovenija, tujina)
+* destinacija: _imenska spremenljivka_ (Slovenija, tujina)
 * starost: _številska spremenljivka_ (15-24, 25-44, 45-64, 65+)
 * povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_ (Povprečno število prenočitev/Povprečni izdatki na turista na prenočitev(EUR))
 * četrtletje: _številska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2005-2014)
@@ -75,7 +75,7 @@ kable(head(tabela2))
 * povprecni_izdatki: _imenska spremenljivka_
 * vrsta_potovanja: _imenska spremenljivka_ (zasebna potovanja(krajša/daljša), poslovna potovanja)
 * destinacija: _imenska spremenljivka_ (Slovenija, tujina)
-* izdatki: _imenska spremenljivka_ (Izdatki za nastanitev, Izdatki za prevoz, Izdatki za hrano in pijačo v restavravijah in klubih, Izdatki za druge aktivnosti, storitve, nakupe)
+* izdatki: _imenska spremenljivka_ (Izdatki za nastanitev, Izdatki za prevoz, Izdatki za hrano in pijačo v restavravijah in lokalih, Izdatki za druge aktivnosti, storitve, nakupe)
 * cetrtletje: _stevilska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2012, 2013, 2014)
 * meritve: _stevilka spremenljivka_
 
