@@ -32,7 +32,7 @@ zem <- ggplot() + geom_polygon(data = zemljevid1, aes(x=long, y=lat, group=group
   scale_fill_gradient (low = "rosybrown1", high = "rosybrown4") +
                                                            guides(fill = guide_colorbar(title = "Stevilo turistov (v milijonih)"))
 
-print(zem)
+
 
 
 
