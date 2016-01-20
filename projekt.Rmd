@@ -20,37 +20,38 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Potovanja Slovencev
 
-Za temo projekta sem si izbrala potovanja Slovencev. V svojem projektu sem analizirala kakšni so povprečni izdatki in povprečno število prenočitev za potovanja po različnih starostnih skupinah. Uporabila sem meritve od leta 2005 do leta 2014. Poleg tega pa sem še za leta 2012, 1013 in 2014 primerjala višino izdatkov za zasebna in poslovna potovanja (izdatki za prevoz in nastanitev).
+Za temo projekta sem si izbrala potovanja Slovencev. Podatke sem uvozila s statističnega urada RS (SURS) in pa iz spletne stran wikipedije. Vse pridobljene podatke sem preuredila do 3.normalizirane oblike. 
+
+V svojem projektu sem analizirala:
+
+* povprečne izdatki in povprečno število prenočitev za potovanja po različnih starostnih skupinah
+* višino izdatkov za zasebna in poslovna potovanja
+* turistično najbolj obiskane države
 
 ***
 
-# Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-## Prva tabela
+## Povprečni izdatki in povprečno število prenočitev
 
-Podatke o potovanjih Slovencev sem, v obliki csv, uvozila iz statističnega urada RS (SURS). Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
+Prvo tabelo sem uvozila v obliki csv-ja. Za lažje analiziranje sem podatke preuredila do 3. normalizirane oblike. Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
 
 ```{r razpredelnice, echo=FALSE}
 kable(head(potovanja))
 ```
 
 
-## Spremenljivke:
+### Spremenljivke:
 
 
-* destinacija: _imenska spremenljivka_
-* starost: _številska spremenljivka_
-* povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_
-* četrtletje: _številska spremenljivka_
+* destinacija: _imenska spremenljivka_ (SLovenija, tujina)
+* starost: _številska spremenljivka_ (15-24, 25-44, 45-64, 65+)
+* povprecno.stevilo.nocitev.in.izdatkov: _imenska spremenljivka_ (Povprečno število prenočitev/Povprečni izdatki na turista na prenočitev(EUR))
+* četrtletje: _številska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2005-2014)
 * meritve: _številska spremenljivka_
-
-
-Da je bilo delo s podatki v nadaljevanju lažje, sem tabelo preuredila do 3.normalizirane oblike. 
-Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazuje povprečne izdatke na turista na prenočitev (v EUR) za Slovenija in tujino glede na različne starostne skupine. Druga pa prikazuje povprečno število prenočitev, prav tako po različnih starostnih skupinah. 
 
 
 
@@ -58,11 +59,11 @@ Nato sem se lotila urejanja podatkov. Sestavila sem dve novi tabeli. Ena prikazu
 ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
 ```
 
+***
 
-## Druga tabela
+## Zasebna in poslovna potovanja
 
 Drugo tabelo sem uvozila v obliki HTML. Ravno tako kot prvo tabelo, sem tudi to preuredila do 3.normalizirane oblike.Tukaj sem primerjala izdatke za poslovna in zasebna potovanja.
-
 
 
 ```{r tabela, echo=FALSE}
@@ -72,37 +73,30 @@ kable(head(tabela2))
 ###Spremenljivke:
 
 * povprecni_izdatki: _imenska spremenljivka_
-* vrsta_potovanja: _imenska spremenljivka_
-* destinacija: _imenska spremenljivka_
-* izdatki: _imenska spremenljivka_
-* cetrtletje: _stevilska spremenljivka_
+* vrsta_potovanja: _imenska spremenljivka_ (zasebna potovanja(krajša/daljša), poslovna potovanja)
+* destinacija: _imenska spremenljivka_ (Slovenija, tujina)
+* izdatki: _imenska spremenljivka_ (Izdatki za nastanitev, Izdatki za prevoz, Izdatki za hrano in pijačo v restavravijah in klubih, Izdatki za druge aktivnosti, storitve, nakupe)
+* cetrtletje: _stevilska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2012, 2013, 2014)
 * meritve: _stevilka spremenljivka_
 
 ```{r graF2, echo=FALSE, fig.cap="Izdatki za nastanitev"}
 ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
 ```
 
-```{r graF3, echo=FALSE}
-ggplot(data=tab%>%filter(Izdatki=='Izdatki za prevoz'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
-```
+***
 
-
-#Vizualizacija
+#Najbolj obiskane države
 
 ```{r vizualizacija, echo=FALSE, results='hide', message=FALSE}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
 
-##Zemljevid
-
-Zemljevid prikazuje turistično najbolj obiskane države v letu 2014.
+Zemljevid prikazuje 10 turistično najbolj obiskanih držav v letu 2014.
 
 ```{r zemljevid, echo=FALSE, fig.cap='Top turisitične države'}
 zem
 ```
-
-
 
 
 
