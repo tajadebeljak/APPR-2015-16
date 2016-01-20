@@ -37,7 +37,7 @@ source("uvoz/uvoz.r", encoding = "UTF-8")
 
 ## Povprečni izdatki in povprečno število prenočitev
 
-Prvo tabelo sem uvozila v obliki csv-ja. Za lažje analiziranje sem podatke preuredila do 3. normalizirane oblike. Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
+Prvo tabelo sem uvozila v obliki CSV. Za lažje analiziranje sem podatke preuredila do 3. normalizirane oblike. Meritve so ločene glede na destinacijo, starost, povprečno število nočitev/izdatkov in pa četrtletje. 
 
 ```{r razpredelnice, echo=FALSE}
 kable(head(potovanja))
