@@ -2,10 +2,9 @@
 
 
 potovanja2 <- potovanja %>% filter (Povprecno.stevilo.nocitev.in.izdatkov=="Povprečni izdatki na turista na prenočitev (EUR)")
-potovanja2$Četrtletje <- gsub("Q1", ".00", potovanja2$Četrtletje) %>% as.numeric()
-potovanja2$Četrtletje <- gsub("Q2", ".25", potovanja2$Četrtletje) %>% as.numeric()
-potovanja2$Četrtletje <- gsub("Q3", ".50", potovanja2$Četrtletje) %>% as.numeric()
-potovanja2$Četrtletje <- gsub("Q4", ".75", potovanja2$Četrtletje) %>% as.numeric()
+potovanja2$Četrtletje <- potovanja2$Četrtletje %>%
+  strapplyc("([0-9]+)Q([0-9])") %>% lapply(as.numeric) %>%
+  sapply(. %>% {.[[1]] + (.[[2]]-1)/4})
 
 graf_potovanj <- ggplot(potovanja2, aes(y=Meritve, x= Četrtletje)) + geom_point()
 
