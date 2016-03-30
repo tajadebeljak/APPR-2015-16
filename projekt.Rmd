@@ -2,11 +2,11 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Taja Debeljak"
 output:
-  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
+  html_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -22,11 +22,12 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 Za temo projekta sem si izbrala potovanja Slovencev. Podatke sem uvozila s statističnega urada RS (SURS) in pa iz spletne stran wikipedije. Vse pridobljene podatke sem preuredila do 3.normalizirane oblike. 
 
-V svojem projektu sem analizirala:
+V svojem projektu sem:
 
-* povprečne izdatki in povprečno število prenočitev za potovanja po različnih starostnih skupinah
-* višino izdatkov za zasebna in poslovna potovanja
-* turistično najbolj obiskane države
+* primerjala višino povprečnih izdatkov in povprečno število prenočitev za potovanja med različnimi starostnimi skupinami
+* analizirala višino izdatkov za zasebna in poslovna potovanja
+* na zemljevidu prikazala turistično najbolj obiskane države
+* analizirala trende potovanj, glede na število prenočitev in višino izdatko za Slovenijo in tujino
 
 ***
 
@@ -101,4 +102,16 @@ zem
 
 
 ***
+#Napovedi za prihodnost
+
+Iz spodnjih grafov je razvidno, da se višina izdatkov, ki jih ljudje namenijo za potovanja z leti povečuje, število prenočitev pa zmanjšuje. To velja tako za Slovenijo, kot tudi za tujino. 
+
+```{r graF3, echo=FALSE, fig.cap='Napoved1}
+graf_potovanj2 
+```
+
+```{r graF3, echo=FALSE, fig.cap='Napoved2'}
+graf_prenočitve1 
+```
+
 
