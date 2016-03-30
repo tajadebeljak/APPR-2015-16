@@ -54,7 +54,7 @@ kable(head(potovanja))
 * četrtletje: _številska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2005-2014)
 * meritve: _številska spremenljivka_
 
-
+Spodnji graf prikazuje kako se število prenočitev na posameznih potovanjih spreminja s starostjo. 
 
 ```{r graF1, echo=FALSE}
 ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
@@ -79,6 +79,8 @@ kable(head(tabela2))
 * izdatki: _imenska spremenljivka_ (Izdatki za nastanitev, Izdatki za prevoz, Izdatki za hrano in pijačo v restavravijah in lokalih, Izdatki za druge aktivnosti, storitve, nakupe)
 * cetrtletje: _stevilska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2012, 2013, 2014)
 * meritve: _stevilka spremenljivka_
+
+Naslednji graf prikazuje višino izdatkov za nastanitev. Vidimo, da so izdatki za tujino precej višji, kot izdatki za potovanja v Sloveniji. To je opazno predvsem pri poslovnih potovanjih. Še večja razlika glede izdatkov za tujino in Slovenijo pa je pri izdatkih za prevoz. 
 
 ```{r graF2, echo=FALSE, fig.cap="Izdatki za nastanitev"}
 ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
