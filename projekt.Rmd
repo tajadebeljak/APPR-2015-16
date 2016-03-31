@@ -111,7 +111,7 @@ source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
 
-Iz spodnjih grafov je razvidno, da se višina izdatkov, ki jih ljudje namenijo za potovanja z leti povečuje, število prenočitev pa zmanjšuje. To velja tako za Slovenijo, kot tudi za tujino. 
+Z uporabo metode najmanjših kvadratov sem izdelala grafe, ki prikazujejo trende potovanj. Iz spodnjih dveh grafov, ki prikazujeta podatke za potovanja po Sloveniji, je razvidno, da se višina izdatkov, ki jih ljudje namenijo za potovanja z leti povečuje, število prenočitev pa zmanjšuje. Podoben trend pa velja tudi za potovanja v tujini. 
 
 ```{r graF3, echo=FALSE, fig.cap='Napoved1'}
 graf_potovanj2 
