@@ -2,11 +2,11 @@
 title: "Poročilo pri predmetu Analiza podatkov s programom R"
 author: "Taja Debeljak"
 output:
+  html_document: default
   pdf_document:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-  html_document: default
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -54,7 +54,7 @@ kable(head(potovanja))
 * četrtletje: _številska spremenljivka_ (1.,2.,3. in 4. četrtletje za leta 2005-2014)
 * meritve: _številska spremenljivka_
 
-Spodnji graf prikazuje kako se število prenočitev v tujini povečuje s starostjo s starostjo. 
+Spodnji graf prikazuje kako se število prenočitev v tujini povečuje s starostjo. 
 
 ```{r graF1, echo=FALSE}
 ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1) + labs(list(title = "Prenočitve v tujini", x="Starost", y="Povprečno število prenočitev"))
@@ -83,7 +83,7 @@ kable(head(tabela2))
 Naslednji graf prikazuje višino izdatkov za nastanitev. Vidimo, da so izdatki za tujino precej višji, kot izdatki za potovanja v Sloveniji. To je opazno predvsem pri poslovnih potovanjih. Še večja razlika glede izdatkov za tujino in Slovenijo pa je pri izdatkih za prevoz. 
 
 ```{r graF2, echo=FALSE, fig.cap="Izdatki za nastanitev"}
-ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge")
+ggplot(data=tab%>%filter(Izdatki=='Izdatki za nastanitev'), aes(x=Vrsta_potovanja, y=`Meritve`, fill=Destinacija)) + geom_bar(stat = "identity", position = "dodge") + labs(list(title = "Izdatki za nastanitev", x="Vrsta potovanja", y="Meritve"))
 ```
 
 ***
@@ -98,7 +98,7 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 Zemljevid prikazuje 10 turistično najbolj obiskanih držav v letu 2014.
 
 ```{r zemljevid, echo=FALSE, fig.cap='Top turisitične države'}
-zem 
+zem + labs(list(title = "Najbolj obiskane države", x="", y="")) 
 ```
 
 
