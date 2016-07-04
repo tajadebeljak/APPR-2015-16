@@ -94,7 +94,9 @@ tabela_prenocitve <- data.frame(starost, round(prenocitve_slo, 2), round(prenoci
                   
 colnames(tabela_prenocitve)<-c("Starost", "Povprecno_st_prenocitev_Slo", "Povprecno_st_prenocitev_tujina")
 
-ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1)
+ggplot(data=tabela_prenocitve, aes(x=Starost, y=Povprecno_st_prenocitev_tujina)) + geom_bar(stat="identity",fill="indianred",size=1) + labs(list(title = "Prenočitve v tujini", x="Starost", y="Povprečno število prenočitev"))
+
+
 
 
 #HTML TABELA
